@@ -7,23 +7,13 @@ const cors = require("cors");
 const DBconnection = require("./DB/DBconnect");
 const router = require("./Routes");
 
-const allowedOrigins = [
-  "https://ecommerce-nac-frontend.vercel.app",
-  "https://ecommerce-nac-frontend-git-main-muhammedrameeszs-projects.vercel.app",
-  "https://ecommerce-nac-frontend-mi3e7ybt7-muhammedrameeszs-projects.vercel.app",
-];
 
 DBconnection();
 
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
+  origin: '*'
 }));
+
 
 app.use(morgan("dev"));
 app.use(express.json());
